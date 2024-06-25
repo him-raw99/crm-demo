@@ -1,5 +1,7 @@
 package in.xeno.api.crm.dao;
 
+import in.xeno.api.crm.constants.ProxyAction;
+import in.xeno.api.crm.constants.ProxyContext;
 import in.xeno.api.crm.lib.ProxyRequest;
 import in.xeno.api.crm.model.Customer;
 import in.xeno.api.crm.pubSub.Producer;
@@ -12,15 +14,13 @@ import java.util.List;
 
 @Component
 public class CustomerDAO {
-    @Autowired
-    private CustomerRepo customerRepo;
-    @Autowired
-    private Producer producer;
+    @Autowired private CustomerRepo customerRepo;
+    @Autowired private Producer producer;
 
 
     public Customer save(Customer customer) {
         try {
-            producer.sendMessage(new ProxyRequest<>("customer", customer));
+            producer.sendMessage(new ProxyRequest<>(ProxyContext.CUSTOMER, ProxyAction.ADD, customer));
             return customer;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -47,5 +47,9 @@ public class CustomerDAO {
 
     public Customer delete(Customer Data) {
         return null;
+    }
+
+    public List<Customer> findAllByRule(String rule) {
+        return customerRepo.findByRule(rule);
     }
 }

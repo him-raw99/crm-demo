@@ -1,5 +1,7 @@
 package in.xeno.api.crm.dao;
 
+import in.xeno.api.crm.constants.ProxyAction;
+import in.xeno.api.crm.constants.ProxyContext;
 import in.xeno.api.crm.lib.ProxyRequest;
 import in.xeno.api.crm.model.Order;
 import in.xeno.api.crm.pubSub.Producer;
@@ -18,7 +20,7 @@ public class OrderDAO {
 
     public void addOrder(Order order) {
         try {
-            producer.sendMessage(new ProxyRequest<>("order", order));
+            producer.sendMessage(new ProxyRequest<>(ProxyContext.ORDER, ProxyAction.ADD, order));
         } catch (Exception e) {
             System.out.println(e.getMessage());
             orderRepo.save(order);

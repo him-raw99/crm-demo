@@ -1,18 +1,15 @@
 package in.xeno.api.crm.lib;
 
+
+import in.xeno.api.crm.constants.ProxyAction;
+import in.xeno.api.crm.constants.ProxyContext;
+import lombok.AllArgsConstructor;
+import lombok.ToString;
+
+@AllArgsConstructor
+@ToString
 public class ProxyRequest<T> {
-    public String context;
+    public ProxyContext context;
+    public ProxyAction action;
     public T data;
-
-    public ProxyRequest(String context, T data) {
-        this.context = context;
-        this.data = data;
-    }
-
-    public String toString(){
-        return "{"+
-                    "context: "+this.context+ " ,"+
-                    "data: "+this.data+
-                "}";
-    }
 }

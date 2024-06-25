@@ -21,6 +21,10 @@ public class CustomerService {
         return customerDAO.findAll();
     }
 
+    public List<Customer> getUsersByRule(String rule) {
+        return customerDAO.findAllByRule(rule);
+    }
+
     public Customer addNewUser(Customer user) throws Exception {
         return customerDAO.save(user);
     }
