@@ -13,11 +13,5 @@ public class Rule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String operator; //case: self reference
-
-    @OneToOne
-    private Rule leftRule;
-    @OneToOne
-    private Rule rightRule;
-    private String query; //case: direct rule
+    private String query;
 }

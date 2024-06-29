@@ -10,7 +10,7 @@ import lombok.ToString;
 @Table
 @Data
 @ToString
-public class Vendor {
+public class Merchant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

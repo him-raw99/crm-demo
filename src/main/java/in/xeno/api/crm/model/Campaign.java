@@ -16,7 +16,7 @@ public class Campaign {
     private String description;
 
     @OneToOne
-    private Vendor vendor;
+    private Merchant merchant;
 
     @OneToOne private Rule rule;
 }
